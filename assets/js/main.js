@@ -53,6 +53,7 @@ const { createApp } = Vue
             done: false,
           }
           if( this.testoInput != '' && this.testoInput.length > 3){
+
             this.obj.text = this.testoInput          
             // console.log(this.obj)
 
@@ -68,7 +69,9 @@ const { createApp } = Vue
         },
 
         deleteComand(i){
+
           this.todos.splice( i, 1)
+
         },
         
 
@@ -84,7 +87,5 @@ const { createApp } = Vue
           }
           
         },
-
-
     }
   }).mount('#app')
