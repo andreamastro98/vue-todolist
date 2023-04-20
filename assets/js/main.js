@@ -4,11 +4,32 @@ const { createApp } = Vue
     data() {
       return {
         //variabili vue 3
-        message: 'Hello Vue!',
+        value:'',
+        todos: [
+          {
+            text: 'Fare i compiti',
+            done: false
+          },
+          {
+            text: 'Fare la spesa',
+            done: true
+          },
+          {
+            text: 'Fare il bucato',
+            done: false
+          }
+        ],
+        obj:{
+          text: '',
+          done: false,
+        }, 
+
       }
     },
     methods: {
         //funzioni vue 3
-        
+        insertItem(){
+          this.obj.push()
+        }
     }
   }).mount('#app')
