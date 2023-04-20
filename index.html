@@ -14,26 +14,35 @@
 
     <div id="app">
         <div class="container">
+
             <h1 class="text-center my-2">To Do List</h1>
+
             <div class="d-flex align-items-center justify-content-center mb-3">
-                <input type="text" v-model="testoInput" class="form-control mx-1">
+                <input type="text" v-model="testoInput" @KeyUp.enter="insertItem" class="form-control mx-1">
                 <button type="button" class="btn btn-primary" @click="insertItem">Inserisci</button>
             </div>
+            
+            <div v-if="error" class="alert alert-danger" role="alert">
+                Non hai inserito un comando superiore a 3 caratteri ⚠️
+            </div>
+
             <div v-for="( elem, index ) in todos"
             :key="index"
             class="d-flex justify-content-between border-bottom border-light-subtle p-2 align-items-center">
                 <div>
-                    <p>{{elem.text}}</p>
+                    <p :class="(elem.done == true) ? 'text-decoration-line-through': ''">{{elem.text}}</p>
                 </div>
+                
                 <div class="d-flex">
                     <div>
-                        <i class="fa-solid fa-check mx-3" style="color: #23af51;"></i>
+                        <i class="fa-solid fa-check mx-3" role="button" style="color: #23af51;" @click="lineThrough(index)"></i>
                     </div>
                     <div>
-                        <i class="fa-solid fa-xmark" style="color: #ff0000;"></i>
+                        <i class="fa-solid fa-xmark" role="button" style="color: #ff0000;" @click="deleteComand(index)"></i>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>

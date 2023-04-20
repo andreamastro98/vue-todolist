@@ -41,10 +41,7 @@ const { createApp } = Vue
             done: false
           }
         ],
-        // obj:{
-        //   text: '',
-        //   done: false,
-        // },
+        
         error: false,
       }
     },
@@ -57,15 +54,37 @@ const { createApp } = Vue
           }
           if( this.testoInput != '' && this.testoInput.length > 3){
             this.obj.text = this.testoInput          
-            console.log(this.obj)
+            // console.log(this.obj)
 
             this.todos.unshift(this.obj)
-            console.log(this.todos)
-            this.error = false
-            
+            // console.log(this.todos)
+            this.testoInput = '';
+
+            this.error = false;
+
           } else {
-            this.error = true
+            this.error = true;
           }
-        }
+        },
+
+        deleteComand(i){
+          this.todos.splice( i, 1)
+        },
+        
+
+        lineThrough(i){
+
+          if( this.todos[i].done == false){
+
+            this.todos[i].done = true;
+
+          } else {
+
+            this.todos[i].done = false;
+          }
+          
+        },
+
+
     }
   }).mount('#app')
