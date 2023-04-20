@@ -26,7 +26,7 @@ const { createApp } = Vue
     data() {
       return {
         //variabili vue 3
-        TestoInput:'',
+        testoInput:'',
         todos: [
           {
             text: 'Fare i compiti',
@@ -41,18 +41,31 @@ const { createApp } = Vue
             done: false
           }
         ],
-        obj:{
-          text: '',
-          done: false,
-        }, 
-
+        // obj:{
+        //   text: '',
+        //   done: false,
+        // },
+        error: false,
       }
     },
     methods: {
         //funzioni vue 3
         insertItem(){
-          this.obj.name = this.TestoInput
-          console.log(obj)
+          this.obj = {
+            text: '',
+            done: false,
+          }
+          if( this.testoInput != '' && this.testoInput.length > 3){
+            this.obj.text = this.testoInput          
+            console.log(this.obj)
+
+            this.todos.unshift(this.obj)
+            console.log(this.todos)
+            this.error = false
+            
+          } else {
+            this.error = true
+          }
         }
     }
   }).mount('#app')
