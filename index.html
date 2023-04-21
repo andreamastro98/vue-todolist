@@ -17,15 +17,18 @@
 
             <h1 class="text-center my-2">To Do List</h1>
 
+            <!-- input text con bottone -->
             <div class="d-flex align-items-center justify-content-center mb-3">
                 <input type="text" v-model="testoInput" @KeyUp.enter="insertItem" class="form-control mx-1">
                 <button type="button" class="btn btn-primary" @click="insertItem">Inserisci</button>
             </div>
             
+            <!-- alert se sbagli ad inserire la task -->
             <div v-if="error" class="alert alert-danger" role="alert">
                 Non hai inserito un comando superiore a 3 caratteri ⚠️
             </div>
 
+            <!-- div con la task, checkbox e deletebox -->
             <div v-for="( elem, index ) in todos"
             :key="index"
             class="d-flex justify-content-between border-bottom border-light-subtle p-2 align-items-center">
@@ -43,6 +46,7 @@
                 </div>
             </div>
 
+            <!-- alert se non ci sono task -->
             <div v-if="todos.length == 0" class="alert alert-success" role="alert">
                 Hai completato tutte le task 💃🤸💣
             </div>

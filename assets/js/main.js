@@ -48,28 +48,39 @@ const { createApp } = Vue
     methods: {
         //funzioni vue 3
         insertItem(){
+
+          //creo un oggetto vuoto
           this.obj = {
             text: '',
             done: false,
           }
+
+          //condizione se la task inserita non é vuota o la task non supera i 3 caratteri
           if( this.testoInput != '' && this.testoInput.length > 3){
 
+            //pusho testo in input nell text dell'oggetto
             this.obj.text = this.testoInput          
             // console.log(this.obj)
 
+            //pusho l'oggetto nell'array
             this.todos.unshift(this.obj)
             // console.log(this.todos)
+
+            //pulisco il campo di input
             this.testoInput = '';
 
             this.error = false;
 
           } else {
+
+            //imposto la variabile error: vera
             this.error = true;
           }
         },
 
         deleteComand(i){
 
+          //elimino l'oggetto specifico dall'array tramite l'index
           this.todos.splice( i, 1)
 
         },
@@ -77,12 +88,15 @@ const { createApp } = Vue
 
         lineThrough(i){
 
+          //condizione se il singolo oggetto é false
           if( this.todos[i].done == false){
 
+            //se é false lo imposto true
             this.todos[i].done = true;
 
           } else {
 
+            //se é vero lo imposto false
             this.todos[i].done = false;
           }
           
